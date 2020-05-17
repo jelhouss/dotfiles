@@ -1,0 +1,44 @@
+# This is Git's per-user configuration file.
+[user]
+  name = Houssam Jelliti
+  email = jelitihoussam@gmail.com
+
+[alias]
+  # nice logging
+  l = log --oneline --graph
+
+  # pull with submodules
+  p = pull --recurse-submodules
+
+ # clone with submodules
+  c = clone --recursive
+
+ # add all changes and commit
+  ca = !git add -A && git commit
+
+ # create a branch and checkout to it, else just checkout 
+  go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+ # ammend forgotten files to the last commit
+  amend = commit --amend --reuse-message=HEAD
+
+ # interactive rebase with a number of latest commits
+  reb = "!f() { git rebase -i HEAD~$1; }; f"
+
+ # list branches (local and remote)
+  branches = branch -a
+
+ # find branches that contains a commit
+  fb = "!f() { git branch -a --contains $1; }; f"
+
+ # find tags that contains a commit
+  ft = "!f() { git describe --contains $1; }; f"
+
+ # find commit by commit message
+  fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+ # checkout to master and remove local branches that are merged
+  dm = "!git checkout master | git branch -r --merged | grep -v master | xargs -n 1 git branch -d"
+
+ # stash files including untracked files
+  stash = "!f() { git stash --include-untracked save $1; }; f"
