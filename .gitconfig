@@ -41,4 +41,4 @@
   dm = "!git checkout master | git branch -r --merged | grep -v master | xargs -n 1 git branch -d"
 
  # stash files including untracked files
-  stash = "!f() { git stash --include-untracked save $1; }; f"
+  s = "!f() { git stash save $1 --include-untracked; }; f"
