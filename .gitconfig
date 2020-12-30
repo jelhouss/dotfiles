@@ -42,3 +42,6 @@
 
  # stash files including untracked files
   s = "!f() { git stash save $1 --include-untracked; }; f"
+
+ # https://carolynvanslyck.com/blog/2020/12/git-wip/
+  wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
