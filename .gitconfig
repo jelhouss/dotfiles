@@ -45,3 +45,7 @@
 
  # https://carolynvanslyck.com/blog/2020/12/git-wip/
   wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+
+ # log commits that happened on a specific file
+  logfile = "!f() { git log --follow -- $1; }; f"
+  lfile = "!f() { git l --follow -- $1; }; f"
